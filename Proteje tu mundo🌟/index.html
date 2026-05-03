@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protege Tu Mundo 🌟 - Seguridad para Niñas y Niños</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #4CAF50;
+    --verde-claro: #81C784;
+    --azul: #42A5F5;
+    --azul-claro: #90CAF9;
+    --morado: #AB47BC;
+    --amarillo: #FFD54F;
+    --naranja: #FFA726;
+    --rojo: #EF5350;
+    --rosa: #EC407A;
+    --turquesa: #26C6DA;
+    --fondo: #F0F9FF;
+    --carta: #FFFFFF;
+    --texto: #2D3748;
+    --texto-suave: #718096;
+    --sombra: 0 8px 32px rgba(66,165,245,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  /* ===== ENCABEZADO ===== */
+  header {
+    background: linear-gradient(135deg, #1565C0 0%, #283593 50%, #6A1B9A 100%);
+    color: white;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-stars {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  .header-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 48px 24px 36px;
+  }
+
+  .header-emoji { font-size: 56px; display: block; margin-bottom: 12px; }
+
+  header h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    letter-spacing: 1px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  header p.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  .header-badges {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .badge {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+    padding: 6px 18px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .badge:hover { background: rgba(255,255,255,0.35); transform: translateY(-2px); }
+
+  /* ===== NAV ===== */
+  nav {
+    background: white;
+    border-bottom: 3px solid var(--azul-claro);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  .nav-tabs {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-tabs::-webkit-scrollbar { display: none; }
+
+  .nav-tab {
+    flex-shrink: 0;
+    padding: 14px 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    color: var(--texto-suave);
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Nunito', sans-serif;
+  }
+  .nav-tab:hover { color: var(--azul); border-bottom-color: var(--azul-claro); }
+  .nav-tab.active { color: #1565C0; border-bottom-color: #1565C0; background: #F0F9FF; }
+
+  /* ===== SECCIONES ===== */
+  .section {
+    display: none;
+    padding: 32px 20px;
+    max-width: 960px;
+    margin: 0 auto;
+    animation: fadeIn 0.4s ease;
+  }
+  .section.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ===== TARJETAS ===== */
+  .card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: var(--sombra);
+    border: 2px solid transparent;
+  }
+
+  .card-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+
+  /* ===== BOTONES ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    transition: all 0.2s;
+  }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-verde { background: var(--verde); color: white; }
+  .btn-azul { background: var(--azul); color: white; }
+  .btn-rojo { background: var(--rojo); color: white; }
+  .btn-morado { background: var(--morado); color: white; }
+  .btn-naranja { background: var(--naranja); color: white; }
+
+  /* ===== ALERTA EMERGENCIA ===== */
+  .emergency-banner {
+    background: linear-gradient(135deg, #B71C1C, #D32F2F);
+    color: white;
+    border-radius: 20px;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .emergency-icon { font-size: 48px; flex-shrink: 0; }
+  .emergency-text h2 { font-family: 'Fredoka One', cursive; font-size: 1.6rem; }
+  .emergency-text p { opacity: 0.9; margin-top: 4px; }
+  .emergency-numbers { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+  .number-pill {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 50px;
+    padding: 8px 18px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .number-pill:hover { background: rgba(255,255,255,0.35); }
+
+  /* ===== JUEGO - SEMÁFORO CORPORAL ===== */
+  .cuerpo-container {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .cuerpo-svg-wrap { flex: 0 0 200px; text-align: center; }
+
+  .body-zones { flex: 1; min-width: 220px; }
+
+  .zone-card {
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 3px solid transparent;
+    font-weight: 700;
+  }
+  .zone-card.verde { background: #E8F5E9; border-color: #4CAF50; color: #2E7D32; }
+  .zone-card.amarillo { background: #FFFDE7; border-color: #FDD835; color: #F57F17; }
+  .zone-card.rojo { background: #FFEBEE; border-color: #EF5350; color: #B71C1C; }
+  .zone-card:hover { transform: translateX(6px); }
+
+  /* ===== JUEGO - DETECTIVE ===== */
+  .detective-scene {
+    background: linear-gradient(135deg, #E3F2FD, #E8EAF6);
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .monster-emoji { font-size: 80px; display: block; margin-bottom: 12px; animation: wobble 2s infinite; }
+  @keyframes wobble { 0%,100%{transform:rotate(-5deg)} 50%{transform:rotate(5deg)} }
+
+  .detective-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 20px; }
+
+  .option-card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 12px;
+    cursor: pointer;
+    border: 3px solid #E0E0E0;
+    transition: all 0.2s;
+    font-weight: 700;
+    text-align: center;
+  }
+  .option-card:hover { border-color: var(--azul); transform: translateY(-4px); box-shadow: var(--sombra); }
+  .option-card .opt-icon { font-size: 36px; display: block; margin-bottom: 8px; }
+  .option-card.selected-good { border-color: var(--verde); background: #E8F5E9; }
+  .option-card.selected-bad { border-color: var(--rojo); background: #FFEBEE; }
+
+  /* ===== JUEGO - FAMILIA ===== */
+  .familia-canvas-wrap { text-align: center; }
+  #familiaCanvas {
+    border-radius: 16px;
+    border: 3px dashed #90CAF9;
+    cursor: crosshair;
+    background: white;
+    max-width: 100%;
+    height: auto;
+    touch-action: none;
+  }
+  .color-picker { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 12px 0; }
+  .color-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: transform 0.1s;
+  }
+  .color-dot:hover, .color-dot.selected { transform: scale(1.3); border-color: #333; }
+
+  /* ===== JUEGO - SEMÁFORO EMOCIONAL ===== */
+  .semaforo { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .semaforo-luz {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    transition: all 0.2s;
+    opacity: 0.4;
+    border: 4px solid rgba(0,0,0,0.15);
+  }
+  .semaforo-luz:hover, .semaforo-luz.active { opacity: 1; transform: scale(1.15); }
+  .semaforo-rojo { background: #EF5350; }
+  .semaforo-amarillo { background: #FDD835; }
+  .semaforo-verde { background: #4CAF50; }
+  .semaforo-label { font-weight: 700; font-size: 0.9rem; color: var(--texto-suave); }
+
+  /* ===== JUEGO - AVENTURA INTERACTIVA ===== */
+  .aventura-scene {
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .aventura-bg {
+    background: linear-gradient(180deg, #87CEEB 0%, #87CEEB 60%, #90EE90 60%, #90EE90 100%);
+    padding: 32px 20px 20px;
+    text-align: center;
+    position: relative;
+    min-height: 200px;
+  }
+  .aventura-personaje { font-size: 64px; }
+  .aventura-situacion {
+    background: white;
+    border-left: 6px solid var(--azul);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+  .aventura-opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .aventura-btn {
+    padding: 14px;
+    border-radius: 14px;
+    border: 3px solid #E0E0E0;
+    background: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  .aventura-btn:hover { border-color: var(--azul); background: #E3F2FD; }
+
+  /* ===== RESULTADO IA ===== */
+  .resultado-ia {
+    display: none;
+    border-radius: 20px;
+    padding: 28px;
+    margin-top: 24px;
+    text-align: center;
+  }
+  .resultado-ia.verde { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); border: 3px solid #4CAF50; }
+  .resultado-ia.amarillo { background: linear-gradient(135deg, #FFFDE7, #FFF9C4); border: 3px solid #FDD835; }
+  .resultado-ia.rojo { background: linear-gradient(135deg, #FFEBEE, #FFCDD2); border: 3px solid #EF5350; }
+
+  .resultado-puntos {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3rem;
+    display: block;
+  }
+  .resultado-nivel {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.6rem;
+    margin: 8px 0;
+  }
+
+  /* ===== BARRA DE PROGRESO ===== */
+  .progress-container { background: #E0E0E0; border-radius: 50px; height: 22px; overflow: hidden; margin: 16px 0; }
+  .progress-bar {
+    height: 100%;
+    border-radius: 50px;
+    transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: white;
+  }
+
+  /* ===== SEÑALES DE ALERTA ===== */
+  .señal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    background: #F8F9FA;
+    border-left: 5px solid var(--azul);
+  }
+  .señal-icon { font-size: 24px; flex-shrink: 0; }
+
+  /* ===== REPORTE ===== */
+  .report-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--texto);
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 2px solid #E0E0E0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--azul);
+  }
+  .form-group textarea { min-height: 100px; resize: vertical; }
+
+  /* ===== IA CARGANDO ===== */
+  .ia-loading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: #EDE7F6;
+    border-radius: 14px;
+    color: #6A1B9A;
+    font-weight: 700;
+  }
+  .ia-dots span {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #6A1B9A;
+    animation: bounce 1.2s infinite;
+  }
+  .ia-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .ia-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+  /* ===== SEGURIDAD ONLINE ===== */
+  .seguridad-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .seguridad-card {
+    border-radius: 16px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .seguridad-card:hover { transform: translateY(-5px); }
+  .seguridad-card .icon { font-size: 40px; margin-bottom: 10px; }
+  .seguridad-card h4 { font-weight: 800; margin-bottom: 6px; font-size: 0.95rem; }
+  .seguridad-card p { font-size: 0.85rem; opacity: 0.85; }
+
+  /* PREGUNTA QUIZ */
+  .quiz-container { }
+  .quiz-pregunta { font-size: 1.15rem; font-weight: 700; margin-bottom: 18px; line-height: 1.5; }
+  .quiz-opciones { display: grid; gap: 10px; }
+  .quiz-opcion {
+    background: white;
+    border: 3px solid #E0E0E0;
+    border-radius: 12px;
+    padding: 14px 18px;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+  }
+  .quiz-opcion:hover { border-color: var(--azul); background: #E3F2FD; }
+  .quiz-opcion.correcta { border-color: var(--verde); background: #E8F5E9; }
+  .quiz-opcion.incorrecta { border-color: var(--rojo); background: #FFEBEE; }
+  .quiz-feedback {
+    margin-top: 14px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    display: none;
+  }
+
+  .puntos-totales-display {
+    background: linear-gradient(135deg, #1565C0, #6A1B9A);
+    color: white;
+    border-radius: 16px;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  /* Animación estrellas */
+  .star-burst { animation: starPop 0.5s ease forwards; }
+  @keyframes starPop { 0%{transform:scale(0)} 60%{transform:scale(1.3)} 100%{transform:scale(1)} }
+
+  @media (max-width: 600px) {
+    .cuerpo-container { flex-direction: column; }
+    .cuerpo-svg-wrap { flex: none; }
+    .aventura-opciones { grid-template-columns: 1fr; }
+    .emergency-banner { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ENCABEZADO -->
+<header>
+  <div class="header-stars"></div>
+  <div class="header-content">
+    <span class="header-emoji">🌟</span>
+    <h1>¡Protege Tu Mundo!</h1>
+    <p class="subtitle">Un espacio seguro para niñas y niños 💙 Aprende, juega y cuídate</p>
+    <div class="header-badges">
+      <span class="badge">👦 Para Niños</span>
+      <span class="badge">👩 Para Niñas</span>
+      <span class="badge">👪 Para Familias</span>
+      <span class="badge">🏫 Para Maestros</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAVEGACIÓN -->
+<nav>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showSection('inicio')">🏠 Inicio</button>
+    <button class="nav-tab" onclick="showSection('juegos')">🎮 Juegos</button>
+    <button class="nav-tab" onclick="showSection('aventura')">🦸 Aventura</button>
+    <button class="nav-tab" onclick="showSection('ia-analisis')">🤖 Mi Análisis</button>
+    <button class="nav-tab" onclick="showSection('señales')">🔍 Señales</button>
+    <button class="nav-tab" onclick="showSection('reporte')">🚨 Reportar</button>
+    <button class="nav-tab" onclick="showSection('seguridad')">🔒 Online</button>
+  </div>
+</nav>
+
+<!-- =================== INICIO =================== -->
+<section id="inicio" class="section active">
+
+  <div class="emergency-banner">
+    <div class="emergency-icon">🚨</div>
+    <div class="emergency-text">
+      <h2>¿Estás en peligro o conoces a alguien que lo esté?</h2>
+      <p>Llama ahora mismo. No estás solo/a. ¡Siempre hay adultos que te pueden ayudar!</p>
+      <div class="emergency-numbers">
+        <div class="number-pill" onclick="callNumber('911')">📞 911 - Emergencias</div>
+        <div class="number-pill" onclick="callNumber('800-290-0024')">💙 800-290-0024 DIF</div>
+        <div class="number-pill" onclick="reportCyber()">🌐 Policía Cibernética</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card" style="border-color:#90CAF9;">
+      <div class="card-title" style="color:#1565C0;">🌟 ¿Qué es este espacio?</div>
+      <p>Este es un lugar <strong>seguro y divertido</strong> para que aprendas sobre tu cuerpo, tus emociones y cómo protegerte. Aquí puedes jugar, aprender y hablar sin miedo.</p>
+      <br>
+      <p>📌 <strong>Tu cuerpo te pertenece solo a ti.</strong> Nadie tiene derecho a tocarte si tú no quieres.</p>
+    </div>
+    <div class="card" style="border-color:#C8E6C9;">
+      <div class="card-title" style="color:#2E7D32;">💪 Tus derechos</div>
+      <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
+        <li>✅ Derecho a decir <strong>¡NO!</strong> cuando algo no te gusta</li>
+        <li>✅ Derecho a pedir <strong>ayuda</strong> siempre que lo necesites</li>
+        <li>✅ Derecho a tener <strong>secretos buenos</strong> (no los que te hacen sentir mal)</li>
+        <li>✅ Derecho a ser <strong>creído/a</strong> cuando hablas</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg,#F3E5F5,#EDE7F6); border-color:#AB47BC;">
+    <div class="card-title" style="color:#6A1B9A;">🎮 ¡Empieza a Jugar y Aprender!</div>
+    <p style="margin-bottom:16px;">Tenemos juegos especiales que te ayudan a conocerte mejor. La inteligencia artificial analiza tus respuestas para ayudarte. ¡Todo es confidencial y seguro!</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <button class="btn btn-morado" onclick="showSection('juegos'); switchTab(4)">🎯 Ir a los Juegos</button>
+      <button class="btn btn-azul" onclick="showSection('aventura'); switchTab(5)">🦸 Aventura Interactiva</button>
+      <button class="btn btn-verde" onclick="showSection('ia-analisis'); switchTab(6)">🤖 Ver Mi Análisis</button>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card" style="text-align:center; border-color:#FFCC80;">
+      <div style="font-size:48px;">🤗</div>
+      <h3 style="color:#E65100; font-family:'Fredoka One',cursive; margin:12px 0 8px;">Cuéntale a un adulto</h3>
+      <p style="font-size:0.9rem;">Busca a un adulto de confianza: mamá, papá, maestra, familiar. <strong>¡Siempre te escucharán!</strong></p>
+    </div>
+    <div class="card" style="text-align:center; border-color:#F48FB1;">
+      <div style="font-size:48px;">🛡️</div>
+      <h3 style="color:#880E4F; font-family:'Fredoka One',cursive; margin:12px 0 8px;">Di ¡NO! sin miedo</h3>
+      <p style="font-size:0.9rem;">Tienes el poder de decir NO a cualquier cosa que no te guste. ¡Tu voz importa!</p>
+    </div>
+    <div class="card" style="text-align:center; border-color:#B39DDB;">
+      <div style="font-size:48px;">📞</div>
+      <h3 style="color:#4527A0; font-family:'Fredoka One',cursive; margin:12px 0 8px;">Pide ayuda ahora</h3>
+      <p style="font-size:0.9rem;">Si algo te preocupa, <strong>llama al 800-290-0024</strong> o al 911. ¡Hay personas esperando para ayudarte!</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== JUEGOS =================== -->
+<section id="juegos" class="section">
+
+  <div class="puntos-totales-display">
+    <div>
+      <div style="font-size:0.85rem;opacity:0.8;">Tus puntos acumulados</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:1.8rem;" id="puntosDisplay">0 / 100</div>
+    </div>
+    <div style="font-size:2rem;" id="starDisplay">⭐</div>
+  </div>
+
+  <!-- JUEGO 1: SEMÁFORO CORPORAL -->
+  <div class="card" style="border-color:#90CAF9;">
+    <div class="card-title" style="color:#1565C0;">🚦 Juego 1: El Semáforo de mi Cuerpo</div>
+    <p style="margin-bottom:18px;">Aprende qué partes de tu cuerpo son privadas. ¡Toca cada parte del cuerpo para aprender!</p>
+    <div class="cuerpo-container">
+      <div class="cuerpo-svg-wrap">
+        <svg viewBox="0 0 200 400" width="180" height="360" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cuerpo completo -->
+          <circle cx="100" cy="50" r="38" fill="#FFCC80" stroke="#E65100" stroke-width="2"/>
+          <!-- Cara -->
+          <circle cx="88" cy="44" r="5" fill="#333"/>
+          <circle cx="112" cy="44" r="5" fill="#333"/>
+          <path d="M 88 60 Q 100 72 112 60" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Cabello -->
+          <ellipse cx="100" cy="15" rx="36" ry="12" fill="#6D4C41"/>
+          <!-- Cuello -->
+          <rect x="88" y="86" width="24" height="18" fill="#FFCC80" rx="4"/>
+          <!-- Torso -->
+          <rect x="60" y="102" width="80" height="110" fill="#42A5F5" rx="12" id="torso" style="cursor:pointer" onclick="showBodyInfo('torso')"/>
+          <!-- Zona privada torso (indicador) -->
+          <rect x="72" y="170" width="56" height="42" fill="#EF5350" rx="8" opacity="0.3" id="privada-torso" style="cursor:pointer" onclick="showBodyInfo('privada')"/>
+          <!-- Brazos -->
+          <rect x="20" y="108" width="36" height="85" fill="#FFCC80" rx="14" style="cursor:pointer" onclick="showBodyInfo('brazos')"/>
+          <rect x="144" y="108" width="36" height="85" fill="#FFCC80" rx="14" style="cursor:pointer" onclick="showBodyInfo('brazos')"/>
+          <!-- Piernas -->
+          <rect x="66" y="212" width="30" height="110" fill="#1565C0" rx="10" style="cursor:pointer" onclick="showBodyInfo('piernas')"/>
+          <rect x="104" y="212" width="30" height="110" fill="#1565C0" rx="10" style="cursor:pointer" onclick="showBodyInfo('piernas')"/>
+          <!-- Zapatos -->
+          <ellipse cx="81" cy="325" rx="20" ry="10" fill="#5D4037"/>
+          <ellipse cx="119" cy="325" rx="20" ry="10" fill="#5D4037"/>
+          <!-- Etiqueta de partes privadas -->
+          <rect x="136" y="168" width="58" height="22" fill="#EF5350" rx="8"/>
+          <text x="165" y="183" font-family="Arial" font-size="9" fill="white" text-anchor="middle">¡PRIVADO! 🔒</text>
+          <line x1="136" y1="180" x2="128" y2="185" stroke="#EF5350" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="body-zones">
+        <div id="bodyInfo" style="background:#E3F2FD;border-radius:12px;padding:16px;margin-bottom:14px;min-height:80px;">
+          <strong>👆 ¡Toca el cuerpo del personaje!</strong><br>
+          Cada parte te enseñará qué tipo de toque está bien y cuál no.
+        </div>
+        <div class="zone-card verde">
+          <strong>🟢 Zonas OK</strong><br>
+          Manos, brazos, espalda alta, cabeza. Abrazos de personas de confianza cuando tú quieres.
+        </div>
+        <div class="zone-card amarillo">
+          <strong>🟡 Con cuidado</strong><br>
+          Cara, cuello, hombros. Solo con tu permiso y por razones de cuidado (como un médico con tus papás).
+        </div>
+        <div class="zone-card rojo">
+          <strong>🔴 PRIVADAS</strong><br>
+          Las partes cubiertas por traje de baño. ¡NADIE debe tocarlas! Solo tú, o doctores en presencia de tus papás.
+        </div>
+        <div style="margin-top:14px;">
+          <button class="btn btn-verde" onclick="addPoints(8, 'juego1')">✅ ¡Entendí! +8 puntos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JUEGO 2: SEMÁFORO EMOCIONAL -->
+  <div class="card" style="border-color:#F48FB1;">
+    <div class="card-title" style="color:#880E4F;">❤️ Juego 2: ¿Cómo me siento?</div>
+    <p style="margin-bottom:20px;">¿Cómo te hace sentir cuando alguien toca tu cuerpo sin permiso? Mueve el semáforo.</p>
+    <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:center;">
+      <div class="semaforo">
+        <div class="semaforo-luz semaforo-rojo" onclick="selectEmocion('mal')" id="sem-rojo">😢</div>
+        <div class="semaforo-label">Mal / Asustado</div>
+        <div class="semaforo-luz semaforo-amarillo" onclick="selectEmocion('confundido')" id="sem-amarillo">😕</div>
+        <div class="semaforo-label">Confundido</div>
+        <div class="semaforo-luz semaforo-verde" onclick="selectEmocion('bien')" id="sem-verde">😊</div>
+        <div class="semaforo-label">Bien / Seguro</div>
+      </div>
+      <div style="flex:1; min-width:200px;">
+        <div id="emocionInfo" style="background:#FFF9C4;border-radius:14px;padding:18px;min-height:100px;font-size:1rem;">
+          <strong>🎯 ¿Cómo te sientes cuando alguien te abraza sin permiso?</strong>
+          <br><br>Toca el semáforo para responder.
+        </div>
+        <div id="emocionBtn" style="margin-top:12px;display:none;">
+          <button class="btn btn-naranja" onclick="addPoints(10, 'juego2')">✅ ¡Respondí! +10 puntos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JUEGO 3: VERDAD o MITO -->
+  <div class="card" style="border-color:#C8E6C9;">
+    <div class="card-title" style="color:#2E7D32;">🧩 Juego 3: ¿Verdad o Mito?</div>
+    <div class="quiz-container" id="quizContainer">
+      <div id="quizProgress" style="font-size:0.85rem;color:var(--texto-suave);margin-bottom:10px;">Pregunta 1 de 5</div>
+      <div class="quiz-pregunta" id="quizPregunta"></div>
+      <div class="quiz-opciones" id="quizOpciones"></div>
+      <div class="quiz-feedback" id="quizFeedback"></div>
+      <div id="quizNextBtn" style="margin-top:14px;display:none;">
+        <button class="btn btn-verde" onclick="nextQuiz()">➡️ Siguiente pregunta</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JUEGO 4: DETECCIÓN EMOCIONAL - Dibuja tu familia -->
+  <div class="card" style="border-color:#FFCC80;">
+    <div class="card-title" style="color:#E65100;">🎨 Juego 4: Dibuja tu familia</div>
+    <p style="margin-bottom:14px;">Dibuja a las personas de tu familia. ¿Cómo se sienten? ¿Qué hacen juntos?</p>
+    <div class="familia-canvas-wrap">
+      <div class="color-picker" id="colorPicker"></div>
+      <canvas id="familiaCanvas" width="600" height="300"></canvas>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap;">
+        <button class="btn btn-azul" onclick="clearCanvas()">🗑️ Borrar</button>
+        <button class="btn btn-verde" onclick="analyzeDrawing()">🤖 Analizar dibujo +12 pts</button>
+      </div>
+    </div>
+    <div id="drawingAnalysis" style="display:none;margin-top:16px;padding:16px;background:#EDE7F6;border-radius:12px;"></div>
+  </div>
+
+</section>
+
+<!-- =================== AVENTURA =================== -->
+<section id="aventura" class="section">
+  <div class="card" style="border-color:#90CAF9;">
+    <div class="card-title" style="color:#1565C0;">🦸 La Aventura del Guardián Valiente</div>
+    <p style="margin-bottom:20px;">Eres el/la guardián/a de tu propio cuerpo. ¡Toma decisiones valientes para protegerte!</p>
+    <div id="aventuraContainer"></div>
+  </div>
+</section>
+
+<!-- =================== IA ANÁLISIS =================== -->
+<section id="ia-analisis" class="section">
+  <div class="card" style="border-color:#AB47BC;">
+    <div class="card-title" style="color:#6A1B9A;">🤖 Análisis de Inteligencia Artificial</div>
+    <p>Aquí verás lo que la IA detectó a partir de tus juegos y respuestas. <strong>Todo es confidencial.</strong></p>
+  </div>
+
+  <div id="iaResultContainer">
+    <div class="card" style="text-align:center;padding:40px;">
+      <div style="font-size:64px;margin-bottom:16px;">🎮</div>
+      <h3 style="font-family:'Fredoka One',cursive;color:#6A1B9A;margin-bottom:12px;">¡Juega primero!</h3>
+      <p>Completa los juegos para que la IA pueda analizar tus respuestas y mostrarte los resultados aquí.</p>
+      <br>
+      <button class="btn btn-morado" onclick="showSection('juegos'); switchTab(4)">🎮 Ir a jugar</button>
+    </div>
+  </div>
+
+  <div id="iaFullAnalysis" style="display:none;">
+    <div class="card">
+      <div class="card-title" style="color:#6A1B9A;">📊 Tu Puntuación</div>
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <span class="resultado-puntos" id="iaScore" style="color:#6A1B9A;">0</span>
+          <span style="font-size:1rem;color:var(--texto-suave);">/100 puntos</span>
+        </div>
+        <div style="flex:1;min-width:200px;">
+          <div class="progress-container">
+            <div class="progress-bar" id="iaProgressBar" style="width:0%;background:linear-gradient(90deg,#42A5F5,#AB47BC);">0%</div>
+          </div>
+          <div id="iaNivel" style="font-family:'Fredoka One',cursive;font-size:1.4rem;margin-top:8px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="iaVeredicto" class="resultado-ia"></div>
+
+    <div class="card" id="iaRecomendaciones">
+      <div class="card-title" style="color:#1565C0;">💡 Recomendaciones</div>
+      <div id="iaRecoLista"></div>
+    </div>
+
+    <div class="card" style="background:linear-gradient(135deg,#FFF3E0,#FFE0B2);border-color:#FFA726;">
+      <div class="card-title" style="color:#E65100;">⚠️ Recuerda siempre</div>
+      <p>Este análisis es <strong>solo orientativo</strong>. Si tienes preocupaciones, habla con un adulto de confianza o llama al <strong>800-290-0024 (DIF)</strong>. Los profesionales están aquí para ayudarte. 💙</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SEÑALES =================== -->
+<section id="señales" class="section">
+  <div class="card" style="border-color:#EF5350;">
+    <div class="card-title" style="color:#B71C1C;">🔍 Señales de Alerta</div>
+    <p>Estas son señales que pueden indicar que un niño/a necesita ayuda. Si ves alguna, habla con un adulto de confianza.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title" style="color:#E65100;">😟 Señales Emocionales</div>
+      <div class="señal-item"><span class="señal-icon">😰</span><div><strong>Miedo repentino</strong> a personas o lugares específicos sin razón aparente</div></div>
+      <div class="señal-item"><span class="señal-icon">😭</span><div><strong>Llanto frecuente</strong> o tristeza sin explicación clara</div></div>
+      <div class="señal-item"><span class="señal-icon">😶</span><div><strong>Aislamiento</strong> de amigos y familia que antes frecuentaba</div></div>
+      <div class="señal-item"><span class="señal-icon">😨</span><div><strong>Pesadillas</strong> o miedo a dormir solo/a</div></div>
+      <div class="señal-item"><span class="señal-icon">😠</span><div><strong>Cambios repentinos</strong> de comportamiento: agresividad o retraimiento</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:#1565C0;">🖊️ Señales Conductuales</div>
+      <div class="señal-item"><span class="señal-icon">🎭</span><div><strong>Comportamiento sexual</strong> inapropiado para su edad en juegos</div></div>
+      <div class="señal-item"><span class="señal-icon">📚</span><div><strong>Bajo rendimiento escolar</strong> repentino sin causa aparente</div></div>
+      <div class="señal-item"><span class="señal-icon">🍽️</span><div><strong>Cambios en alimentación</strong> o sueño (mucho o muy poco)</div></div>
+      <div class="señal-item"><span class="señal-icon">🔒</span><div><strong>Guardar secretos</strong> con adultos de forma extraña o incómoda</div></div>
+      <div class="señal-item"><span class="señal-icon">💰</span><div><strong>Regalos inesperados</strong> de adultos sin razón clara</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="border-color:#AB47BC;">
+    <div class="card-title" style="color:#6A1B9A;">🧠 Maltrato Psicológico: ¿Cómo identificarlo?</div>
+    <div class="grid-2">
+      <div>
+        <h4 style="margin-bottom:12px;color:#880E4F;">❌ Esto NO está bien:</h4>
+        <div class="señal-item" style="border-left-color:#EF5350;"><span class="señal-icon">😤</span><div>Gritarte constantemente o llamarte por apodos hirientes</div></div>
+        <div class="señal-item" style="border-left-color:#EF5350;"><span class="señal-icon">👎</span><div>Decirte que no sirves para nada o que eres tonto/a</div></div>
+        <div class="señal-item" style="border-left-color:#EF5350;"><span class="señal-icon">😱</span><div>Amenazarte para que guardes silencio</div></div>
+        <div class="señal-item" style="border-left-color:#EF5350;"><span class="señal-icon">🚫</span><div>Ignorarte completamente o hacerte sentir invisible</div></div>
+      </div>
+      <div>
+        <h4 style="margin-bottom:12px;color:#2E7D32;">✅ Esto SÍ está bien:</h4>
+        <div class="señal-item" style="border-left-color:#4CAF50;"><span class="señal-icon">💬</span><div>Que los adultos te hablen con respeto aunque estén enojados</div></div>
+        <div class="señal-item" style="border-left-color:#4CAF50;"><span class="señal-icon">🤝</span><div>Que te expliquen el porqué de las reglas</div></div>
+        <div class="señal-item" style="border-left-color:#4CAF50;"><span class="señal-icon">❤️</span><div>Que te digan que te quieren y lo demuestren</div></div>
+        <div class="señal-item" style="border-left-color:#4CAF50;"><span class="señal-icon">👂</span><div>Que te escuchen cuando hablas</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== REPORTE =================== -->
+<section id="reporte" class="section">
+
+  <div class="emergency-banner" style="background:linear-gradient(135deg,#1A237E,#283593);">
+    <div class="emergency-icon">🌐</div>
+    <div class="emergency-text">
+      <h2>Reportar Pornografía Infantil en Internet</h2>
+      <p>Si encuentras contenido ilegal de menores en internet, repórtalo INMEDIATAMENTE. Es un delito grave.</p>
+      <div class="emergency-numbers">
+        <div class="number-pill" onclick="window.open('https://www.gob.mx/policiafederal/articulos/denuncia-cibernetica','_blank')">🌐 Policía Cibernética México</div>
+        <div class="number-pill" onclick="window.open('https://www.cybertipline.org','_blank')">🌍 NCMEC CyberTipline</div>
+        <div class="number-pill" onclick="callNumber('088')">📞 088 - Denuncia Federal</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card" style="border-color:#EF5350;">
+      <div class="card-title" style="color:#B71C1C;">🚨 Pasos para Reportar</div>
+      <div style="counter-reset:steps;">
+        <div class="señal-item" style="border-left-color:#EF5350;">
+          <span style="background:#EF5350;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;">1</span>
+          <div><strong>NO compartas</strong> el contenido. Solo guarda la URL o captura de pantalla.</div>
+        </div>
+        <div class="señal-item" style="border-left-color:#EF5350;">
+          <span style="background:#EF5350;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;">2</span>
+          <div><strong>Anota</strong> la URL, fecha, hora y nombre de usuario/cuenta.</div>
+        </div>
+        <div class="señal-item" style="border-left-color:#EF5350;">
+          <span style="background:#EF5350;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;">3</span>
+          <div><strong>Reporta en la plataforma</strong> (Instagram, TikTok, Facebook) usando el botón de reportar.</div>
+        </div>
+        <div class="señal-item" style="border-left-color:#EF5350;">
+          <span style="background:#EF5350;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;">4</span>
+          <div><strong>Denuncia ante</strong> la Policía Cibernética o la Fiscalía General.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-color:#42A5F5;">
+      <div class="card-title" style="color:#0D47A1;">📞 Contactos de Emergencia</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <button class="btn btn-rojo" style="justify-content:flex-start;" onclick="callNumber('911')">📞 911 — Emergencias Nacionales</button>
+        <button class="btn btn-azul" style="justify-content:flex-start;" onclick="callNumber('800-290-0024')">💙 800-290-0024 — DIF Nacional</button>
+        <button class="btn btn-morado" style="justify-content:flex-start;" onclick="callNumber('088')">🚔 088 — Denuncia Anónima FGR</button>
+        <button class="btn btn-naranja" style="justify-content:flex-start;" onclick="window.open('https://www.gob.mx/policiafederal/articulos/denuncia-cibernetica','_blank')">🌐 Policía Cibernética en línea</button>
+        <button class="btn btn-verde" style="justify-content:flex-start;" onclick="window.open('https://www.cybertipline.org','_blank')">🌍 NCMEC (Internacional)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULARIO DE REPORTE -->
+  <div class="card" style="border-color:#FFA726;">
+    <div class="card-title" style="color:#E65100;">📝 Formulario de Denuncia (Guía)</div>
+    <p style="margin-bottom:20px;color:var(--texto-suave);">Este formulario te ayuda a organizar la información antes de hacer una denuncia formal con las autoridades.</p>
+    <div class="report-form">
+      <div class="form-group">
+        <label>🔗 URL o dirección del contenido</label>
+        <input type="url" placeholder="https://..." id="reportUrl">
+      </div>
+      <div class="form-group">
+        <label>📱 Plataforma</label>
+        <select id="reportPlatform">
+          <option value="">Selecciona la plataforma</option>
+          <option>Instagram</option>
+          <option>TikTok</option>
+          <option>Facebook</option>
+          <option>Twitter/X</option>
+          <option>YouTube</option>
+          <option>WhatsApp</option>
+          <option>Telegram</option>
+          <option>Otra</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>📅 Fecha y hora en que lo encontraste</label>
+        <input type="datetime-local" id="reportDate">
+      </div>
+      <div class="form-group">
+        <label>📋 Descripción breve (no incluyas detalles explícitos)</label>
+        <textarea placeholder="Describe brevemente sin detallar el contenido..." id="reportDesc"></textarea>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <button class="btn btn-rojo" onclick="generateReport()">🚨 Preparar Denuncia Formal</button>
+        <button class="btn btn-azul" onclick="window.open('https://www.gob.mx/policiafederal/articulos/denuncia-cibernetica','_blank')">🌐 Ir a Policía Cibernética</button>
+      </div>
+    </div>
+    <div id="reportResult" style="display:none;margin-top:20px;"></div>
+  </div>
+</section>
+
+<!-- =================== SEGURIDAD ONLINE =================== -->
+<section id="seguridad" class="section">
+  <div class="card">
+    <div class="card-title" style="color:#1565C0;">🔒 Seguridad en Internet</div>
+    <p>Internet puede ser un lugar genial, ¡pero hay que usarlo con cuidado! Aprende las reglas de oro.</p>
+  </div>
+
+  <div class="seguridad-grid">
+    <div class="seguridad-card" style="background:#E3F2FD;">
+      <div class="icon">🙈</div>
+      <h4 style="color:#1565C0;">Nunca compartas</h4>
+      <p style="color:#1565C0;">Tu nombre, escuela, dirección o fotos con desconocidos</p>
+    </div>
+    <div class="seguridad-card" style="background:#E8F5E9;">
+      <div class="icon">🗣️</div>
+      <h4 style="color:#2E7D32;">Cuéntale a un adulto</h4>
+      <p style="color:#2E7D32;">Si alguien en internet te incomoda, dile inmediatamente a un adulto</p>
+    </div>
+    <div class="seguridad-card" style="background:#FFF9C4;">
+      <div class="icon">🔐</div>
+      <h4 style="color:#F57F17;">Contraseñas privadas</h4>
+      <p style="color:#F57F17;">No compartas tus contraseñas, ni con amigos. Solo con tus papás</p>
+    </div>
+    <div class="seguridad-card" style="background:#FFEBEE;">
+      <div class="icon">🚫</div>
+      <h4 style="color:#B71C1C;">No a los extraños</h4>
+      <p style="color:#B71C1C;">No aceptes solicitudes de amistad de personas que no conoces en la vida real</p>
+    </div>
+    <div class="seguridad-card" style="background:#F3E5F5;">
+      <div class="icon">📸</div>
+      <h4 style="color:#6A1B9A;">Fotos privadas</h4>
+      <p style="color:#6A1B9A;">NUNCA envíes fotos tuyas a desconocidos, aunque te pidan o prometan cosas</p>
+    </div>
+    <div class="seguridad-card" style="background:#E0F7FA;">
+      <div class="icon">✋</div>
+      <h4 style="color:#00695C;">Di NO online</h4>
+      <p style="color:#00695C;">Puedes bloquear y reportar a cualquier persona que te haga sentir mal</p>
+    </div>
+  </div>
+
+  <div class="card" style="border-color:#AB47BC;">
+    <div class="card-title" style="color:#6A1B9A;">⚠️ Grooming: El Peligro Oculto</div>
+    <p style="margin-bottom:16px;">El <strong>grooming</strong> es cuando un adulto usa internet para ganarse la confianza de un niño/a con malas intenciones.</p>
+    <div class="grid-2">
+      <div>
+        <h4 style="margin-bottom:10px;color:#B71C1C;">🚩 Señales de peligro:</h4>
+        <div class="señal-item" style="border-left-color:#EF5350;"><span class="señal-icon">🎁</span><div>Te ofrece regalos o dinero por chatear</div></div>
+        <div class="señal-item" style="border-left-color:#EF5350;"><span class="señal-icon">🤫</span><div>Te pide guardar secretos de tus papás</div></div>
+        <div class="señal-item" style="border-left-color:#EF5350;"><span class="señal-icon">📷</span><div>Te pide fotos o videos de tu cuerpo</div></div>
+        <div class="señal-item" style="border-left-color:#EF5350;"><span class="señal-icon">😍</span><div>Dice que te quiere mucho aunque no te conoce</div></div>
+      </div>
+      <div style="background:#FFF9C4;border-radius:14px;padding:20px;display:flex;flex-direction:column;justify-content:center;text-align:center;">
+        <div style="font-size:48px;margin-bottom:12px;">🛡️</div>
+        <h3 style="color:#E65100;font-family:'Fredoka One',cursive;margin-bottom:10px;">¡TÚ TIENES EL PODER!</h3>
+        <p>Bloquea, reporta y cuéntale a un adulto de confianza <strong>de inmediato</strong>.</p>
+        <br>
+        <button class="btn btn-rojo" onclick="callNumber('800-290-0024')">📞 Pedir ayuda ahora</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL RESULTADO -->
+<div id="modalOverlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:999;align-items:center;justify-content:center;">
+  <div id="modalContent" style="background:white;border-radius:24px;padding:32px;max-width:420px;margin:20px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <div id="modalIcon" style="font-size:64px;margin-bottom:16px;"></div>
+    <h2 id="modalTitle" style="font-family:'Fredoka One',cursive;margin-bottom:10px;"></h2>
+    <p id="modalText" style="color:var(--texto-suave);margin-bottom:20px;"></p>
+    <button class="btn btn-morado" onclick="closeModal()">✅ ¡Entendido!</button>
+  </div>
+</div>
+
+<footer style="background:#1A237E;color:rgba(255,255,255,0.85);text-align:center;padding:32px 20px;margin-top:40px;">
+  <div style="font-size:32px;margin-bottom:8px;">🌟</div>
+  <p style="font-family:'Fredoka One',cursive;font-size:1.3rem;color:white;">¡Recuerda: Tu seguridad es lo más importante!</p>
+  <p style="margin-top:8px;">DIF Nacional: <strong>800-290-0024</strong> | Emergencias: <strong>911</strong> | Denuncia: <strong>088</strong></p>
+  <p style="margin-top:16px;font-size:0.8rem;opacity:0.6;">Este sitio es un recurso educativo. Ante cualquier emergencia, contacta a las autoridades competentes.</p>
+</footer>
+
+<script>
+// ===== ESTADO GLOBAL =====
+let puntosTotal = 0;
+let juegosCompletados = {};
+let indicadores = {
+  conocimientoCorpo: 0,
+  respuestaEmocional: 0,
+  conocimientoDerechos: 0,
+  señalesDibujo: 0,
+  respuestasAventura: 0
+};
+
+// ===== NAVEGACIÓN =====
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  const tabs = document.querySelectorAll('.nav-tab');
+  const sectionIds = ['inicio','juegos','aventura','ia-analisis','señales','reporte','seguridad'];
+  const idx = sectionIds.indexOf(id);
+  if (tabs[idx]) tabs[idx].classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  if (id === 'ia-analisis') updateIADisplay();
+}
+
+function switchTab(n) {}
+
+document.querySelectorAll('.nav-tab').forEach((tab, i) => {
+  const sectionIds = ['inicio','juegos','aventura','ia-analisis','señales','reporte','seguridad'];
+  tab.addEventListener('click', () => showSection(sectionIds[i]));
+});
+
+// ===== PUNTOS =====
+function addPoints(pts, juegoId) {
+  if (juegosCompletados[juegoId]) return;
+  juegosCompletados[juegoId] = true;
+  puntosTotal = Math.min(100, puntosTotal + pts);
+  indicadores.conocimientoDerechos = Math.min(100, indicadores.conocimientoDerechos + pts);
+  updatePuntosDisplay();
+  showModal('⭐', '¡Excelente!', `+${pts} puntos ganados. ¡Sigue aprendiendo!`);
+}
+
+function updatePuntosDisplay() {
+  const el = document.getElementById('puntosDisplay');
+  const star = document.getElementById('starDisplay');
+  if (el) el.textContent = puntosTotal + ' / 100';
+  if (star) {
+    const stars = puntosTotal >= 80 ? '⭐⭐⭐' : puntosTotal >= 50 ? '⭐⭐' : '⭐';
+    star.textContent = stars;
+  }
+}
+
+// ===== CUERPO =====
+const bodyInfos = {
+  torso: { title:'👕 Torso y Espalda', text:'El torso (pecho y espalda) puede tocarse para un abrazo de alguien de confianza. Pero las partes íntimas del pecho en niñas son privadas.', color:'#E3F2FD' },
+  privada: { title:'🔒 ¡Zona PRIVADA!', text:'Las partes cubiertas por el traje de baño SON COMPLETAMENTE PRIVADAS. Nadie tiene derecho a tocarlas excepto un médico en presencia de tus papás.', color:'#FFEBEE' },
+  brazos: { title:'💪 Brazos y Manos', text:'Los brazos y manos generalmente están bien. Un apretón de manos, un abrazo son normales cuando tú lo permites.', color:'#E8F5E9' },
+  piernas: { title:'🦵 Piernas', text:'Las piernas también son una zona que debes proteger. Si alguien toca tus piernas y te hace sentir incómodo/a, di NO y cuéntalo.', color:'#FFF9C4' }
+};
+
+function showBodyInfo(zone) {
+  const info = bodyInfos[zone];
+  const div = document.getElementById('bodyInfo');
+  if (div && info) {
+    div.style.background = info.color;
+    div.innerHTML = `<strong>${info.title}</strong><br><br>${info.text}`;
+    indicadores.conocimientoCorpo += 5;
+  }
+}
+
+// ===== EMOCIONES =====
+function selectEmocion(tipo) {
+  ['mal','confundido','bien'].forEach(t => {
+    const ids = { mal:'sem-rojo', confundido:'sem-amarillo', bien:'sem-verde' };
+    document.getElementById(ids[t]).classList.remove('active');
+  });
+  const ids = { mal:'sem-rojo', confundido:'sem-amarillo', bien:'sem-verde' };
+  document.getElementById(ids[tipo]).classList.add('active');
+  const msgs = {
+    mal: '¡Muy bien! Si alguien te toca sin permiso y te sientes mal, ESA sensación es correcta. Significa que algo está mal. ¡Cuéntaselo a un adulto! 💪',
+    confundido: 'Es normal sentirse confundido/a. Cuando no estás seguro/a si un toque está bien, lo mejor es contárselo a un adulto de confianza.',
+    bien: 'Recuerda: un abrazo de alguien de confianza cuando TÚ quieres está bien. Pero si no quieres, ¡tienes derecho a decir NO!'
+  };
+  const div = document.getElementById('emocionInfo');
+  div.innerHTML = `<strong>Tu respuesta:</strong><br><br>${msgs[tipo]}`;
+  document.getElementById('emocionBtn').style.display = 'block';
+  indicadores.respuestaEmocional += 8;
+}
+
+// ===== QUIZ =====
+const quizPreguntas = [
+  { q:'Si un familiar mayor te dice "esto es un secreto entre nosotros" después de tocarte, ¿qué debes hacer?', ops:['Guardar el secreto','Contarle a otro adulto de confianza','No decir nada para no hacer enojar','Aceptar porque es familia'], correcta:1, feedback:'✅ ¡Correcto! Los secretos que te hacen sentir mal NUNCA deben guardarse. Los adultos de confianza siempre te creerán.' },
+  { q:'Tu cuerpo te pertenece a...', ops:['A tus papás','A tus maestros','Solo a ti mismo/a','A todos los adultos'], correcta:2, feedback:'✅ ¡Exacto! Tu cuerpo es SOLO tuyo. Nadie tiene derecho a tocarlo sin tu permiso.' },
+  { q:'Si alguien en internet te pide una foto de tu cuerpo, ¿qué haces?', ops:['La mandas si te prometen algo','Bloqueas, no mandas nada y se lo cuentas a un adulto','La mandas si parece amable','Primero preguntas para qué'], correcta:1, feedback:'✅ ¡Perfecto! Nunca envíes fotos íntimas a nadie. Bloquea, no respondas y cuéntalo siempre.' },
+  { q:'¿Cuál es un toque BUENO?', ops:['Un adulto que toca tus partes privadas','Un abrazo de tu mamá cuando tú quieres','Que te toquen aunque digas NO','Fotografías de tu cuerpo'], correcta:1, feedback:'✅ ¡Bien pensado! Los abrazos que TÚ aceptas de personas de confianza están bien. Tú decides.' },
+  { q:'Si sientes que algo que un adulto hace o dice te incomoda, ¿qué es lo correcto?', ops:['Quedarte callado/a porque nadie te creerá','Pensar que estás exagerando','Contárselo a otro adulto de confianza inmediatamente','Olvidarlo para no crear problemas'], correcta:2, feedback:'✅ ¡Siempre cuéntalo! Los adultos responsables te creerán y te ayudarán. ¡Nunca es tu culpa!' }
+];
+
+let quizActual = 0;
+let quizPuntos = 0;
+let quizRespondido = false;
+
+function initQuiz() {
+  renderQuiz();
+}
+
+function renderQuiz() {
+  if (quizActual >= quizPreguntas.length) {
+    document.getElementById('quizContainer').innerHTML = `
+      <div style="text-align:center;padding:24px;">
+        <div style="font-size:64px;">🏆</div>
+        <h3 style="font-family:'Fredoka One',cursive;color:#2E7D32;margin:12px 0;">¡Quiz Completado!</h3>
+        <p>Obtuviste ${quizPuntos}/${quizPreguntas.length} respuestas correctas</p>
+        <br>
+        <button class="btn btn-verde" onclick="addPoints(${quizPuntos * 4}, 'quiz')">✅ Reclamar puntos</button>
+      </div>`;
+    return;
+  }
+  const p = quizPreguntas[quizActual];
+  document.getElementById('quizProgress').textContent = `Pregunta ${quizActual+1} de ${quizPreguntas.length}`;
+  document.getElementById('quizPregunta').textContent = p.q;
+  document.getElementById('quizOpciones').innerHTML = p.ops.map((o,i) =>
+    `<button class="quiz-opcion" onclick="answerQuiz(${i})">${o}</button>`
+  ).join('');
+  document.getElementById('quizFeedback').style.display = 'none';
+  document.getElementById('quizNextBtn').style.display = 'none';
+  quizRespondido = false;
+}
+
+function answerQuiz(idx) {
+  if (quizRespondido) return;
+  quizRespondido = true;
+  const p = quizPreguntas[quizActual];
+  const btns = document.querySelectorAll('.quiz-opcion');
+  btns[idx].classList.add(idx === p.correcta ? 'correcta' : 'incorrecta');
+  if (idx === p.correcta) { btns[p.correcta].classList.add('correcta'); quizPuntos++; indicadores.conocimientoDerechos += 6; }
+  else { btns[p.correcta].classList.add('correcta'); }
+  const fb = document.getElementById('quizFeedback');
+  fb.style.display = 'block';
+  fb.style.background = idx === p.correcta ? '#E8F5E9' : '#FFEBEE';
+  fb.style.color = idx === p.correcta ? '#2E7D32' : '#B71C1C';
+  fb.textContent = p.feedback;
+  document.getElementById('quizNextBtn').style.display = 'block';
+}
+
+function nextQuiz() {
+  quizActual++;
+  renderQuiz();
+}
+
+// ===== CANVAS DIBUJO =====
+let drawing = false;
+let currentColor = '#E53935';
+let lastX = 0, lastY = 0;
+const colors = ['#E53935','#1E88E5','#43A047','#FFB300','#8E24AA','#00ACC1','#F4511E','#546E7A','#000000'];
+
+function initCanvas() {
+  const cp = document.getElementById('colorPicker');
+  colors.forEach(c => {
+    const d = document.createElement('div');
+    d.className = 'color-dot' + (c === currentColor ? ' selected' : '');
+    d.style.background = c;
+    d.onclick = () => { currentColor = c; document.querySelectorAll('.color-dot').forEach(x=>x.classList.remove('selected')); d.classList.add('selected'); };
+    cp.appendChild(d);
+  });
+
+  const canvas = document.getElementById('familiaCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.lineCap = 'round';
+  ctx.lineWidth = 4;
+
+  function getPos(e) {
+    const r = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / r.width;
+    const scaleY = canvas.height / r.height;
+    if (e.touches) return [(e.touches[0].clientX - r.left) * scaleX, (e.touches[0].clientY - r.top) * scaleY];
+    return [(e.clientX - r.left) * scaleX, (e.clientY - r.top) * scaleY];
+  }
+
+  canvas.addEventListener('mousedown', e => { drawing=true; [lastX,lastY]=getPos(e); });
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing=true; [lastX,lastY]=getPos(e); });
+  canvas.addEventListener('mousemove', e => { if(!drawing) return; draw(ctx, ...getPos(e)); });
+  canvas.addEventListener('touchmove', e => { e.preventDefault(); if(!drawing) return; draw(ctx, ...getPos(e)); });
+  canvas.addEventListener('mouseup', () => drawing=false);
+  canvas.addEventListener('touchend', () => drawing=false);
+}
+
+function draw(ctx, x, y) {
+  ctx.beginPath();
+  ctx.moveTo(lastX, lastY);
+  ctx.lineTo(x, y);
+  ctx.strokeStyle = currentColor;
+  ctx.lineWidth = 4;
+  ctx.stroke();
+  [lastX, lastY] = [x, y];
+}
+
+function clearCanvas() {
+  const canvas = document.getElementById('familiaCanvas');
+  canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+  document.getElementById('drawingAnalysis').style.display = 'none';
+}
+
+async function analyzeDrawing() {
+  if (juegosCompletados['dibujo']) { showModal('⭐','Ya completaste este juego','¡Sigue con los otros juegos!'); return; }
+  const div = document.getElementById('drawingAnalysis');
+  div.style.display = 'block';
+  div.innerHTML = `<div class="ia-loading">🤖 La IA está analizando tu dibujo... <div class="ia-dots"><span></span><span></span><span></span></div></div>`;
+
+  const canvas = document.getElementById('familiaCanvas');
+  const imageData = canvas.toDataURL('image/png');
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: `Eres un psicólogo infantil experto en evaluación de dibujos de la familia (test de la familia). 
+        Analiza el dibujo de forma POSITIVA y ALENTADORA para niños. 
+        Responde SIEMPRE en español, de forma amigable para niños de 6-12 años.
+        Proporciona:
+        1. Una observación amable sobre el dibujo
+        2. Una pregunta reflexiva sobre la familia dibujada
+        3. Un mensaje positivo y alentador
+        4. Una puntuación de bienestar de 0-20 (solo el número al final con formato: PUNTUACION:XX)
+        NO menciones conceptos clínicos ni diagnósticos. Sé cálido y empático.`,
+        messages: [{
+          role: 'user',
+          content: [{
+            type: 'image',
+            source: { type: 'base64', media_type: 'image/png', data: imageData.split(',')[1] }
+          }, {
+            type: 'text',
+            text: 'Este es el dibujo de mi familia que hice. Por favor analízalo de forma amable y dime qué observas.'
+          }]
+        }]
+      })
+    });
+    const data = await response.json();
+    const text = data.content.map(i => i.text || '').join('');
+    const puntos = parseInt((text.match(/PUNTUACION:(\d+)/)||[,'10'])[1]);
+    const cleanText = text.replace(/PUNTUACION:\d+/,'').trim();
+    indicadores.señalesDibujo = puntos;
+    div.innerHTML = `
+      <div style="background:white;border-radius:12px;padding:16px;border-left:5px solid #AB47BC;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:24px;">🤖</span>
+          <strong style="color:#6A1B9A;">Análisis de la IA</strong>
+        </div>
+        <p style="white-space:pre-wrap;line-height:1.7;">${cleanText}</p>
+      </div>`;
+    addPoints(12, 'dibujo');
+  } catch(e) {
+    div.innerHTML = `<div style="background:#E8F5E9;border-radius:12px;padding:16px;border-left:5px solid #4CAF50;">
+      <strong>🤖 IA:</strong> ¡Qué bonito dibujo! Dibujaste a tu familia, lo que muestra que te importan las personas que te rodean. Cuéntame, ¿quiénes son las personas que dibujaste?
+    </div>`;
+    indicadores.señalesDibujo = 10;
+    addPoints(12, 'dibujo');
+  }
+}
+
+// ===== AVENTURA =====
+const aventuraEscenas = [
+  {
+    emoji:'🏠', bg:'linear-gradient(180deg,#FFF9C4 0%,#FFF9C4 60%,#A5D6A7 60%,#A5D6A7 100%)',
+    situacion:'Estás en casa. Un familiar mayor te dice que quiere jugar a un juego "especial" y que nadie más debe saberlo. Te hace sentir incómodo/a. ¿Qué haces?',
+    opciones:[
+      {texto:'😮 Accedo porque es familia', puntos:0, malo:true, resp:'❌ Aunque sea familia, NADIE tiene derecho a hacerte sentir incómodo/a. El amor familiar no incluye secretos que te hacen sentir mal.'},
+      {texto:'🏃 Me voy y se lo cuento a otro adulto', puntos:15, malo:false, resp:'✅ ¡Perfecto! Alejarte y contarlo es exactamente lo correcto. ¡Eres muy valiente!'},
+      {texto:'🤫 Me quedo callado/a', puntos:0, malo:true, resp:'❌ Quedarse callado/a no es la respuesta. Siempre hay un adulto de confianza que te escuchará.'},
+      {texto:'📞 Llamo a mi mamá/papá', puntos:15, malo:false, resp:'✅ ¡Excelente decisión! Llamar a tus papás inmediatamente es una respuesta muy valiente.'}
+    ]
+  },
+  {
+    emoji:'💻', bg:'linear-gradient(180deg,#E3F2FD 0%,#E3F2FD 60%,#BBDEFB 60%,#BBDEFB 100%)',
+    situacion:'Alguien que conociste en un juego en línea te pide que le mandes una foto de tu cara. Dice que es tu amigo aunque nunca se han visto en persona. ¿Qué haces?',
+    opciones:[
+      {texto:'📸 Le mando la foto', puntos:0, malo:true, resp:'❌ Nunca mandes fotos a desconocidos en internet, aunque parezcan amables.'},
+      {texto:'🚫 Lo bloqueo y le cuento a mis papás', puntos:15, malo:false, resp:'✅ ¡Genial! Bloquear y contar a un adulto es la decisión más segura.'},
+      {texto:'🤔 Le pregunto para qué la quiere', puntos:5, malo:false, resp:'💛 Está bien tener dudas, pero lo más seguro es bloquear directamente y contarlo.'},
+      {texto:'😶 No respondo y sigo jugando', puntos:3, malo:false, resp:'💛 Ignorar está bien, pero también debes contárselo a un adulto para que estés seguro/a.'}
+    ]
+  },
+  {
+    emoji:'🏫', bg:'linear-gradient(180deg,#F3E5F5 0%,#F3E5F5 60%,#CE93D8 60%,#CE93D8 100%)',
+    situacion:'Un compañero/a de escuela te muestra imágenes en su teléfono que te hacen sentir raro/a y asustado/a. ¿Qué haces?',
+    opciones:[
+      {texto:'👀 Sigo viendo porque tengo curiosidad', puntos:0, malo:true, resp:'❌ Las imágenes inapropiadas pueden hacerte daño. Lo mejor es alejarte.'},
+      {texto:'🚶 Me alejo y le cuento al maestro/a', puntos:15, malo:false, resp:'✅ ¡Muy bien! Alejarte y contarlo al maestro/a es exactamente lo que hay que hacer.'},
+      {texto:'📱 Le digo que borre eso', puntos:8, malo:false, resp:'💛 Está bien decirlo, pero también debes contárselo a un adulto de confianza.'},
+      {texto:'😰 Me quedo callado/a', puntos:0, malo:true, resp:'❌ Los adultos de confianza existen para ayudarte en situaciones como esta.'}
+    ]
+  }
+];
+
+let aventuraActual = 0;
+let aventuraPuntos = 0;
+
+function initAventura() {
+  renderAventura();
+}
+
+function renderAventura() {
+  const container = document.getElementById('aventuraContainer');
+  if (!container) return;
+
+  if (aventuraActual >= aventuraEscenas.length) {
+    container.innerHTML = `
+      <div style="text-align:center;padding:32px;background:linear-gradient(135deg,#E8F5E9,#C8E6C9);border-radius:20px;">
+        <div style="font-size:72px;margin-bottom:12px;">🏆</div>
+        <h2 style="font-family:'Fredoka One',cursive;color:#2E7D32;margin-bottom:10px;">¡Aventura Completada!</h2>
+        <p>¡Eres un verdadero guardián/a de tu seguridad!</p>
+        <p style="margin:12px 0;font-size:1.1rem;">Obtuviste <strong>${aventuraPuntos} puntos</strong> en la aventura</p>
+        <button class="btn btn-verde" onclick="addPoints(aventuraPuntos > 30 ? 18 : 10, 'aventura'); updateIAWithAventura()">🤖 Ver mi análisis</button>
+      </div>`;
+    return;
+  }
+
+  const escena = aventuraEscenas[aventuraActual];
+  container.innerHTML = `
+    <div class="aventura-scene">
+      <div class="aventura-bg" style="background:${escena.bg};">
+        <span class="aventura-personaje">${escena.emoji}</span>
+        <div style="font-size:0.85rem;color:rgba(0,0,0,0.5);margin-top:8px;">Escena ${aventuraActual+1} de ${aventuraEscenas.length}</div>
+      </div>
+    </div>
+    <div class="aventura-situacion">${escena.situacion}</div>
+    <div class="aventura-opciones">
+      ${escena.opciones.map((o,i) => `<button class="aventura-btn" onclick="selectAventura(${i})">${o.texto}</button>`).join('')}
+    </div>
+    <div id="aventuraFeedback" style="display:none;margin-top:16px;border-radius:14px;padding:16px;font-weight:600;"></div>
+    <div id="aventuraNxtBtn" style="display:none;margin-top:12px;">
+      <button class="btn btn-azul" onclick="nextAventura()">➡️ Siguiente situación</button>
+    </div>`;
+}
+
+function selectAventura(idx) {
+  const escena = aventuraEscenas[aventuraActual];
+  const op = escena.opciones[idx];
+  aventuraPuntos += op.puntos;
+  indicadores.respuestasAventura += op.puntos;
+  const fb = document.getElementById('aventuraFeedback');
+  fb.style.display = 'block';
+  fb.style.background = op.malo ? '#FFEBEE' : '#E8F5E9';
+  fb.style.borderLeft = `5px solid ${op.malo ? '#EF5350' : '#4CAF50'}`;
+  fb.textContent = op.resp;
+  document.getElementById('aventuraNxtBtn').style.display = 'block';
+  document.querySelectorAll('.aventura-btn').forEach(b => b.style.pointerEvents = 'none');
+}
+
+function nextAventura() {
+  aventuraActual++;
+  renderAventura();
+}
+
+function updateIAWithAventura() {
+  indicadores.respuestasAventura = aventuraPuntos;
+  showSection('ia-analisis');
+  updateIADisplay();
+}
+
+// ===== IA ANÁLISIS =====
+function calcularPuntuacionIA() {
+  let score = 0;
+  score += Math.min(20, indicadores.conocimientoCorpo);
+  score += Math.min(20, indicadores.respuestaEmocional);
+  score += Math.min(20, indicadores.conocimientoDerechos / 2);
+  score += Math.min(20, indicadores.señalesDibujo);
+  score += Math.min(20, indicadores.respuestasAventura / 2);
+  return Math.min(100, Math.round(score + puntosTotal * 0.3));
+}
+
+async function updateIADisplay() {
+  const totalJuegos = Object.keys(juegosCompletados).length;
+  if (totalJuegos === 0) return;
+
+  document.getElementById('iaResultContainer').style.display = 'none';
+  document.getElementById('iaFullAnalysis').style.display = 'block';
+
+  const score = calcularPuntuacionIA();
+  document.getElementById('iaScore').textContent = score;
+  const bar = document.getElementById('iaProgressBar');
+  setTimeout(() => {
+    bar.style.width = score + '%';
+    bar.textContent = score + '%';
+  }, 100);
+
+  let nivel, color, veredicto, recos;
+
+  if (score <= 30) {
+    nivel = '🟢 ¡Muy bien!';
+    color = 'verde';
+    bar.style.background = 'linear-gradient(90deg,#4CAF50,#81C784)';
+    veredicto = `<span class="resultado-puntos" style="color:#2E7D32;">${score}</span>
+      <div class="resultado-nivel" style="color:#2E7D32;">${nivel}</div>
+      <p>Tus respuestas muestran que tienes buenos conocimientos sobre seguridad personal. ¡Sigue aprendiendo y comparte lo que sabes con tus amigos!</p>`;
+    recos = ['Comparte lo que aprendiste con amigos', 'Sigue practicando los juegos', 'Habla con tu familia sobre seguridad'];
+  } else if (score <= 60) {
+    nivel = '🟡 En Desarrollo';
+    color = 'amarillo';
+    bar.style.background = 'linear-gradient(90deg,#FDD835,#FFB300)';
+    veredicto = `<span class="resultado-puntos" style="color:#F57F17;">${score}</span>
+      <div class="resultado-nivel" style="color:#F57F17;">${nivel}</div>
+      <p>Hay algunas áreas donde podemos seguir aprendiendo juntos. Esto es normal y con práctica mejorarás mucho. ¡No estás solo/a!</p>`;
+    recos = ['Habla con un adulto de confianza sobre lo que aprendiste', 'Repite los juegos para reforzar el aprendizaje', 'Recuerda: siempre puedes pedir ayuda al 800-290-0024'];
+  } else {
+    nivel = '🔴 Atención Especial';
+    color = 'rojo';
+    bar.style.background = 'linear-gradient(90deg,#EF5350,#E53935)';
+    veredicto = `<span class="resultado-puntos" style="color:#B71C1C;">${score}</span>
+      <div class="resultado-nivel" style="color:#B71C1C;">${nivel}</div>
+      <p>Tus respuestas sugieren que podrías estar pasando por algo difícil. <strong>No estás solo/a y NO es tu culpa.</strong> Por favor habla con un adulto de confianza hoy mismo.</p>
+      <br><button class="btn btn-rojo" onclick="callNumber('800-290-0024')">📞 Llamar al DIF ahora: 800-290-0024</button>`;
+    recos = ['Habla HOY con un adulto de confianza', 'Llama al 800-290-0024 (DIF Nacional)', 'Recuerda: NO es tu culpa. Hay personas que quieren ayudarte'];
+  }
+
+  const verEl = document.getElementById('iaVeredicto');
+  verEl.className = 'resultado-ia ' + color;
+  verEl.style.display = 'block';
+  verEl.innerHTML = veredicto;
+
+  document.getElementById('iaNivel').textContent = nivel;
+
+  const recoEl = document.getElementById('iaRecoLista');
+  recoEl.innerHTML = recos.map(r => `<div class="señal-item" style="border-left-color:#42A5F5;"><span class="señal-icon">💡</span><div>${r}</div></div>`).join('');
+
+  // Llamar a la IA para análisis detallado
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: `Eres un psicólogo infantil especialista en protección de menores. 
+        Analiza los indicadores de un niño/a que completó juegos de detección de bienestar.
+        Responde en español, de forma empática y NO alarmista.
+        Da observaciones generales y positivas. Si el puntaje es alto, refuerza buscar apoyo profesional.
+        Usa emojis y lenguaje amigable. Máximo 3 párrafos cortos.`,
+        messages: [{
+          role: 'user',
+          content: `Puntaje total: ${score}/100. 
+          Conocimiento corporal: ${indicadores.conocimientoCorpo}/20. 
+          Respuesta emocional: ${indicadores.respuestaEmocional}/20. 
+          Conocimiento de derechos: ${indicadores.conocimientoDerechos}/100. 
+          Indicadores en dibujo: ${indicadores.señalesDibujo}/20. 
+          Respuestas en aventura: ${indicadores.respuestasAventura}/45.
+          Juegos completados: ${totalJuegos}.
+          Por favor dame un análisis breve y empático.`
+        }]
+      })
+    });
+    const data = await response.json();
+    const iaText = data.content.map(i => i.text || '').join('');
+    const iaDiv = document.createElement('div');
+    iaDiv.className = 'card';
+    iaDiv.style.borderColor = '#AB47BC';
+    iaDiv.innerHTML = `
+      <div class="card-title" style="color:#6A1B9A;">🤖 Análisis Detallado de IA</div>
+      <p style="white-space:pre-wrap;line-height:1.8;">${iaText}</p>`;
+    document.getElementById('iaFullAnalysis').insertBefore(iaDiv, document.getElementById('iaRecomendaciones'));
+  } catch(e) {}
+}
+
+// ===== REPORTE =====
+function generateReport() {
+  const url = document.getElementById('reportUrl').value;
+  const platform = document.getElementById('reportPlatform').value;
+  const date = document.getElementById('reportDate').value;
+  const desc = document.getElementById('reportDesc').value;
+
+  const result = document.getElementById('reportResult');
+  result.style.display = 'block';
+  result.innerHTML = `
+    <div style="background:#E3F2FD;border-radius:14px;padding:20px;border-left:5px solid #1565C0;">
+      <h3 style="color:#1565C0;margin-bottom:12px;">📋 Reporte Preparado</h3>
+      <p><strong>Plataforma:</strong> ${platform || 'No especificada'}</p>
+      <p><strong>URL:</strong> ${url || 'No especificada'}</p>
+      <p><strong>Fecha:</strong> ${date || 'No especificada'}</p>
+      <p><strong>Descripción:</strong> ${desc || 'No especificada'}</p>
+      <br>
+      <p style="color:#B71C1C;font-weight:700;">⚠️ SIGUIENTE PASO: Lleva esta información a las autoridades</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+        <button class="btn btn-rojo" onclick="window.open('https://www.gob.mx/policiafederal/articulos/denuncia-cibernetica','_blank')">🌐 Policía Cibernética</button>
+        <button class="btn btn-azul" onclick="window.open('https://www.cybertipline.org','_blank')">🌍 NCMEC</button>
+      </div>
+    </div>`;
+}
+
+// ===== MODAL =====
+function showModal(icon, title, text) {
+  document.getElementById('modalIcon').textContent = icon;
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalText').textContent = text;
+  document.getElementById('modalOverlay').style.display = 'flex';
+}
+function closeModal() { document.getElementById('modalOverlay').style.display = 'none'; }
+
+function callNumber(num) {
+  showModal('📞', `Llamar al ${num}`, `En México puedes marcar ${num} directamente desde tu teléfono. Si eres menor de edad, pide a un adulto de confianza que te ayude a llamar.`);
+}
+
+function reportCyber() {
+  window.open('https://www.gob.mx/policiafederal/articulos/denuncia-cibernetica', '_blank');
+}
+
+// ===== INICIALIZACIÓN =====
+document.addEventListener('DOMContentLoaded', () => {
+  initCanvas();
+  initQuiz();
+  initAventura();
+});
+</script>
+</body>
+</html>
